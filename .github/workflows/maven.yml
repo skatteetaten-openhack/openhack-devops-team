@@ -18,10 +18,10 @@ on:
 
 jobs:
   build:
-    env:
-      working-directory: 'apis/user-java'
-    
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'apis/user-java'
 
     steps:
     - uses: actions/checkout@v2
