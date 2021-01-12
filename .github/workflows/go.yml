@@ -1,14 +1,16 @@
 name: Go
 
 on:
+  workflow_dispatch:
   push:
     branches: [ dev ]
     paths:
-    - 'apis/trips'
+    - '.github/workflows/go.yml'
+    - 'apis/trips/**'
   pull_request:
     branches: [ master ]
     paths:
-    - 'apis/trips'
+    - 'apis/trips/**'
 
 jobs:
 
