@@ -5,6 +5,7 @@ on:
   push:
     branches: [ dev ]
     paths:
+    - '.github/workflows/go.yml'
     - 'apis/trips/**'
   pull_request:
     branches: [ master ]
