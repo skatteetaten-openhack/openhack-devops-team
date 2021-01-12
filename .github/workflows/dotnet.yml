@@ -24,7 +24,10 @@ jobs:
         dotnet-version: 3.1.301
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: apis/poi
     - name: Build
       run: dotnet build --no-restore
+      working-directory: apis/poi
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: apis/poi
