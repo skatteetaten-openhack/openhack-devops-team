@@ -1,4 +1,6 @@
 name: Go
+env:
+  GO111MODULE: on
 
 on:
   workflow_dispatch:
@@ -18,7 +20,6 @@ jobs:
   build:
 
     env:
-      GO111MODULE: on
       working-direcoty: 'apis/trips'
     runs-on: ubuntu-latest
     steps:
