@@ -20,7 +20,7 @@ jobs:
   build:
 
     env:
-      working-direcoty: 'apis/trips'
+      working-directory: 'apis/trips'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
