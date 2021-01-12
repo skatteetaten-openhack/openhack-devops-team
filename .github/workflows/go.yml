@@ -18,8 +18,8 @@ jobs:
   build:
 
     env:
-      working-direcoty: 'apis/trips'
       GO111MODULE: on
+      working-direcoty: 'apis/trips'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
