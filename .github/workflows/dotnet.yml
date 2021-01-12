@@ -4,11 +4,12 @@ on:
   workflow_dispatch:
   push:
     branches: [ Feature/*, master ]
+    paths: 
+    - 'apis/poi/**' 
   pull_request:
     branches: [ master ]
-  paths:
-    - '.github/workflows/dotnet.yml'
-    - 'apis/poi/**' 
+    paths: 
+    - 'apis/poi/**'
 
 jobs:
   build:
