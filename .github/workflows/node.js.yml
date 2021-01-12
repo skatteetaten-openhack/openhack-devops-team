@@ -6,13 +6,18 @@ name: Node.js CI
 on:
   push:
     branches: [ master, feature/* ]
+    path:
+    - 'apis/userprofile'
+    - '.github/workflows/node.js.yml'
   pull_request:
     branches: [ master ]
-
+    path:
+    - 'apis/userprofile'
+    - '.github/workflows/node.js.yml'
 jobs:
   build:
     env:
-      working-direcoty: 'apis/userprofile'
+      working-directory: 'apis/userprofile'
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,6 +31,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+#    - run: npm install
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+
