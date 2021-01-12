@@ -1,0 +1,29 @@
+name: Go
+
+on:
+  push:
+    branches: [ dev ]
+    paths:
+    - 'apis/trips'
+  pull_request:
+    branches: [ master ]
+    paths:
+    - 'apis/trips'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.15
+
+    - name: Build
+      run: go build -v apis/trips/main .
+
+    - name: Test
+      run: go test -v apis/trips/tests
