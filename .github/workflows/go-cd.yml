@@ -40,3 +40,5 @@ jobs:
           ls
          
           az acr build --image "devopsoh/api-trips:${GITHUB_SHA}" --registry openhacknd25pzl5acr --file Dockerfile . 
+
+          az webapp config container set --name 'openhacknd25pzl5trips' --resource-group 'openhacknd25pzl5rg' --docker-custom-image-name openhacknd25pzl5acr.azurecr.io/devopsoh/api-trips:${GITHUB_SHA} --docker-registry-server-url openhacknd25pzl5acr.azurecr.io
