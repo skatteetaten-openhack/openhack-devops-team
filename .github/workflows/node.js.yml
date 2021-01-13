@@ -36,7 +36,7 @@ jobs:
 #    - run: npm install
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - run: npm testt
     - name: create issue
       if: failure() # OR Check a bool variable you create and toggle as needed
       uses: JasonEtco/create-an-issue@main
