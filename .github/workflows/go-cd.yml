@@ -1,0 +1,31 @@
+name: go-cd
+env:
+  GO111MODULE: on
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master, feature/* ]
+    paths:
+    - '.github/workflows/go-cd.yml'
+    - 'apis/trips/**'
+    - "test"
+  
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az account show
+          az storage -h
