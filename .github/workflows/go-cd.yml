@@ -4,20 +4,16 @@ env:
 
 on:
   workflow_run:
+    branches: 
+    - master
     workflows: 
     - go-ci 
-  workflow_dispatch:
-  push:
-    branches: [ master, feature/* ]
-    paths:
-    - '.github/workflows/go-cd.yml'
-    - 'apis/trips/**'
-    - "test"
+    types:
+     - completed  
   
-
 jobs:
-
   build-and-deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     defaults:
       run:
