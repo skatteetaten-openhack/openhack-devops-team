@@ -38,7 +38,5 @@ jobs:
           cd ${GITHUB_WORKSPACE}/apis/trips
           echo "ls after"
           ls
-          pwd
-  
          
           az acr build --image "devopsoh/api-trips:1" --registry openhacknd25pzl5acr --file Dockerfile . 
