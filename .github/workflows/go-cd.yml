@@ -33,6 +33,12 @@ jobs:
         inlineScript: |
           az account show
           az storage -h
+          echo "ls before"
+          ls
+          cd ${GITHUB_WORKSPACE}
+          echo "ls after"
           ls
           pwd
+  
+         
           az acr build --image "devopsoh/api-trips:1" --registry openhacknd25pzl5acr --file Dockerfile . 
