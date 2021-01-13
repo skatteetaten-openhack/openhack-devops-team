@@ -39,7 +39,7 @@ jobs:
     - run: npm testt
     - name: create issue
       if: failure() # OR Check a bool variable you create and toggle as needed
-      uses: JasonEtco/create-an-issue@main
+      uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
