@@ -40,4 +40,7 @@ jobs:
          
           az acr build --image "devopsoh/api-trips:${GITHUB_SHA}" --registry openhacknd25pzl5acr --file Dockerfile . 
 
-          az webapp config container set --name 'openhacknd25pzl5trips' --resource-group 'openhacknd25pzl5rg' --docker-custom-image-name openhacknd25pzl5acr.azurecr.io/devopsoh/api-trips:${GITHUB_SHA} --docker-registry-server-url openhacknd25pzl5acr.azurecr.io
+          az webapp config container set --slot openhacknd25pzl5trips-staging --name 'openhacknd25pzl5trips' --resource-group 'openhacknd25pzl5rg' --docker-custom-image-name openhacknd25pzl5acr.azurecr.io/devopsoh/api-trips:${GITHUB_SHA} --docker-registry-server-url openhacknd25pzl5acr.azurecr.io
+
+          bash ${GITHUB_WORKSPACE}/polling.sh -i https://openhacknd25pzl5trips-staging.azurewebsites.net/api/healthcheck/trips
+          echo $?
