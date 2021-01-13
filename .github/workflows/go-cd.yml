@@ -39,4 +39,4 @@ jobs:
           echo "ls after"
           ls
          
-          az acr build --image "devopsoh/api-trips:1" --registry openhacknd25pzl5acr --file Dockerfile . 
+          az acr build --image "devopsoh/api-trips:${GITHUB_SHA}" --registry openhacknd25pzl5acr --file Dockerfile . 
