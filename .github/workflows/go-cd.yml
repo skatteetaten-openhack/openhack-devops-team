@@ -3,9 +3,12 @@ env:
   GO111MODULE: on
 
 on:
+  workflow_run:
+    workflows: 
+    - go-ci 
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [ master, feature/* ]
     paths:
     - '.github/workflows/go-cd.yml'
     - 'apis/trips/**'
