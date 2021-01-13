@@ -1,4 +1,4 @@
-name: Go
+name: go-ci
 env:
   GO111MODULE: on
 
@@ -7,13 +7,13 @@ on:
   push:
     branches: [ feature/*, master ]
     paths:
-    - '.github/workflows/go.yml'
+    - '.github/workflows/go-ci.yml'
     - 'apis/trips/**'
   pull_request:
     branches: [ master ]
     paths:
     - 'apis/trips/**'
-    - '.github/workflows/go.yml'
+    - '.github/workflows/go-ci.yml'
 
 jobs:
 
