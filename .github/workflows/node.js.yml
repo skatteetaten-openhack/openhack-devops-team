@@ -17,7 +17,7 @@ on:
     - '.github/workflows/node.js.yml'
 jobs:
 
-  build:
+  -build:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -42,5 +42,29 @@ jobs:
       uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
+    
+  -deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az account show
+            az storage -h
+            echo "ls before"
+            ls
+            cd ${GITHUB_WORKSPACE}/apis/userprofile
+            echo "ls after"
+            ls
+         
+            az acr build --image "devopsoh/api-userprofile:${GITHUB_SHA}" --registry openhacknd25pzl5acr --file Dockerfile . 
+            az webapp config container set --name 'openhacknd25pzl5userprofile' --resource-group 'openhacknd25pzl5rg' --docker-custom-image-name openhacknd25pzl5acr.azurecr.io/devopsoh/api-trips:${GITHUB_SHA} --docker-registry-server-url openhacknd25pzl5acr.azurecr.io
