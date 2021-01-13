@@ -35,7 +35,7 @@ jobs:
           az storage -h
           echo "ls before"
           ls
-          cd ${GITHUB_WORKSPACE}
+          cd ${GITHUB_WORKSPACE}/apis/trips
           echo "ls after"
           ls
           pwd
