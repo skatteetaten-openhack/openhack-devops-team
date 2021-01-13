@@ -17,7 +17,7 @@ on:
     - '.github/workflows/node.js.yml'
 jobs:
 
-  - build:
+  build:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -43,7 +43,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
-  - deploy:
+  deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
