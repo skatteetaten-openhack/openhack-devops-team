@@ -31,4 +31,4 @@ jobs:
         inlineScript: |
           az account show
           az storage -h
-          az acr build --image "devopsoh/api-trips:1 --registry openhacknd25pzl5acr --file Dockerfile . 
+          az acr build --image "devopsoh/api-trips:1" --registry openhacknd25pzl5acr --file Dockerfile . 
