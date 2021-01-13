@@ -16,8 +16,10 @@ jobs:
 
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'apis/trips'
     steps:
-    
     - name: Azure Login
       uses: azure/login@v1
       with:
@@ -29,3 +31,4 @@ jobs:
         inlineScript: |
           az account show
           az storage -h
+          az acr build --image "devopsoh/api-trips:1 --registry openhacknd25pzl5acr --file Dockerfile . 
