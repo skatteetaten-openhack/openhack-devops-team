@@ -28,5 +28,6 @@ RUN apk add --update \
 
 COPY --from=gobuild /go/src/github.com/Azure-Samples/openhack-devops-team/apis/trips/main .
 COPY --from=gobuild /go/src/github.com/Azure-Samples/openhack-devops-team/apis/trips/api ./api/
+COPY --from=gobuild /go/src/github.com/Azure-Samples/openhack-devops-team/apis/trips/version.txt .
 
 CMD ["./main"]
