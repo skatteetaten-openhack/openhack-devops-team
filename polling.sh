@@ -49,16 +49,14 @@ healthcheck() {
 
 while [[ true ]]; do
    sleep $duration
-   result=`healthcheck $endpoint` 
-   echo $result
-   declare status
-   if [[ -z $result ]]; then 
+   status=$(curl -s -o /dev/null -w "%{http_code}" $endpoint) 
+   
+   curl_worked=$?
+
+   if [[ $curl_worked -ne 0 ]]; then 
       status="N/A"
    else
-      status=${result:9:3}
-      
-
-      if [[ $status = 200 ]];
+      if [[ $status = 200  ]];
       then
         echo $status
         exit 0
