@@ -58,4 +58,4 @@ jobs:
             echo "healthcheck failed. Not swapping"
           
           fi
-        
+          az webapp stop --slot staging --name 'openhacknd25pzl5trips' --resource-group 'openhacknd25pzl5rg'
