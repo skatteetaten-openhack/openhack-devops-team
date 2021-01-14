@@ -49,8 +49,14 @@ jobs:
           if [[ $? = 0 ]]; 
           then 
             az webapp deployment slot swap --slot staging --name 'openhacknd25pzl5trips' --resource-group 'openhacknd25pzl5rg' --target-slot production
+            bash ${GITHUB_WORKSPACE}/polling.sh -i https://openhacknd25pzl5trips.azurewebsites.net/api/healthcheck/trips
+            #if [[ $? -ne 0 ]]; 
+            #then
+
+            az webapp deployment slot swap --slot staging --name 'openhacknd25pzl5trips' --resource-group 'openhacknd25pzl5rg' --target-slot production
+
           else
             echo "healthcheck failed. Not swapping"
           
           fi
-          
+        
