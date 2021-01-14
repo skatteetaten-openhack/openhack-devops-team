@@ -49,7 +49,9 @@ healthcheck() {
 
 while [[ true ]]; do
    sleep $duration
+   curl -i $endpoint
    result=`healthcheck $endpoint` 
+   echo $result
    declare status
    if [[ -z $result ]]; then 
       status="N/A"
